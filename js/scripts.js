@@ -1,5 +1,7 @@
 (function(){
     var tiles = []; //arrays que arazenam o estado do jogo e o de vitria, respectivamente
+    var startScreen = document.querySelector("#startScreen");
+    startScreen.addEventListener("click", startGame, false);
 
     //função que inicializa os elementos do jogo
     function init(){
@@ -28,6 +30,28 @@
                 }
             }
         }
+    }
+
+    function randomSort(oldArray){
+        var newArray;
+
+        newArray = [];
+
+        while(newArray.length < oldArray.length){
+            var i = Math.floor(Math.random()*oldArray.length);
+            if(newArray.indexOf(oldArray[i]) < 0){
+                newArray.push(oldArray[i]);
+            }
+        }
+        return newArray;
+    }
+
+    function startGame(){
+        tiles = randomSort(tiles);
+        this.style.opacity = "0";
+        this.style.zIndex = "-1";
+        this.removeEventListener("click", startGame, false);
+        render();
     }
 
     init();

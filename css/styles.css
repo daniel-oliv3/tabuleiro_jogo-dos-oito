@@ -37,6 +37,7 @@ body {
     width: 90px;
     height: 90px;
     position: absolute;
+    transition: left .5s, top .5s;
 }
 
 .tile:hover {
