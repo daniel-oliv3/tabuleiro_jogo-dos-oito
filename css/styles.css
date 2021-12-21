@@ -18,4 +18,17 @@ body {
     position: relative;
     margin: 50px auto;
     background-color: #ccc;
+    border: outset;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.tile {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+}
+
+.tile:hover {
+    border: inset;
+    border-radius: 10px;
 }
