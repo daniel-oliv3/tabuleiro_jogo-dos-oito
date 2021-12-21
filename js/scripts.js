@@ -32,20 +32,43 @@
         }
     }
 
+    //valida o array
+	/*
+	 * o sistema conta uma inversão ao comparar o valor do índice i com os seguintes e identificar valores menores
+	 * Caso o array apresente um número ímpar de inversões, o sistema é insolucionável
+	 * */
+    function validGame(array){
+        var inversions = 0;
+        var len = array.length;
+
+        for(var i = 0; i < len -1; i++){
+            for(var j = i+1; j < len; j++){
+                if(array[i] && array[j] && array[i].dataset.value < array[j].dataset.value){
+                    inversions++;
+                }
+            }
+        }
+        return inversions%2 === 0;
+    }
+
+    //ordenação aleatória do array
     function randomSort(oldArray){
         var newArray;
 
-        newArray = [];
-
-        while(newArray.length < oldArray.length){
-            var i = Math.floor(Math.random()*oldArray.length);
-            if(newArray.indexOf(oldArray[i]) < 0){
-                newArray.push(oldArray[i]);
+        do{
+            newArray = [];
+            while(newArray.length < oldArray.length){
+                var i = Math.floor(Math.random()*oldArray.length);
+                if(newArray.indexOf(oldArray[i]) < 0){
+                    newArray.push(oldArray[i]);
+                }
             }
-        }
+        }while(!validGame(newArray));
+
         return newArray;
     }
 
+    //função que inicia o jogo embaralhando o array e desabilitando a tela inicial
     function startGame(){
         tiles = randomSort(tiles);
         this.style.opacity = "0";
