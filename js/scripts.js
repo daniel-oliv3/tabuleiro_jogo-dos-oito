@@ -91,7 +91,7 @@
 
     function chkWin(){}
 
-    
+    function gameOver(){}
 
     //ordenação aleatória do array
     function randomSort(oldArray){
