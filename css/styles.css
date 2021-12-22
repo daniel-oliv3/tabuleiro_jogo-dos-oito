@@ -26,9 +26,9 @@ body {
 }
 
 #overScreen {
-    background: url('../images/');
-    opacity: 1;
-    z-index: 1;
+    background: url('../images/over.png');
+    opacity: 0;
+    z-index: -1;
 }
 
 #container {
