@@ -1,7 +1,9 @@
 (function(){
     var tiles = []; //arrays que arazenam o estado do jogo e o de vitria, respectivamente
+    var answer = [];
     var startScreen = document.querySelector("#startScreen");
-    startScreen.addEventListener("click", startGame, false);
+        startScreen.addEventListener("click", startGame, false);
+    var overScreen = document.querySelector("#overScreen");
 
     //função que inicializa os elementos do jogo
     function init(){
@@ -12,6 +14,8 @@
             tiles.push(tile);
         }
         tiles.push(null); //completa o array com um espaço nulo e o copia para a resposta, depois renderiza o tabuleiro
+        answer = tiles;
+
         render();
     }
 
@@ -80,7 +84,14 @@
             }
         }
         render();
+        if(chkWin()){
+            gameOve();
+        }
     }
+
+    function chkWin(){}
+
+    
 
     //ordenação aleatória do array
     function randomSort(oldArray){
