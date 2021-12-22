@@ -89,9 +89,24 @@
         }
     }
 
-    function chkWin(){}
+    function chkWin(){
+        for(var i in tiles){
+            var a = tiles[i];
+            var b = answer[i];
+            if(a !== b){
+                return false;
+            }
+        }
+        return true;
+    }
 
-    function gameOver(){}
+    function gameOver(){
+        overScreen.style.opacity = "1";
+        overScreen.style.zIndex = "1";
+        setTimeout(function(){
+            overScreen.addEventListener("click", startGame, false);
+        },500);
+    }
 
     //ordenação aleatória do array
     function randomSort(oldArray){
