@@ -8,6 +8,7 @@
         for(var i = 1; i < 9; i++){ //varre os elementos 'btn' adicionando a imagem e inserindo os elementos no array
             var tile = document.querySelector("#n"+i);
             tile.style.background = "url('images/n"+i+".png')";
+            tile.addEventListener("click", moveTile, false);
             tiles.push(tile);
         }
         tiles.push(null); //completa o array com um espaço nulo e o copia para a resposta, depois renderiza o tabuleiro
@@ -49,6 +50,36 @@
             }
         }
         return inversions%2 === 0;
+    }
+
+    //função que move as peças
+    function moveTile(){
+        var index = tiles.indexOf(this);
+        if(index % 3 !== 0){
+            if(!tiles[index-1]){
+                tiles[index-1] = this;
+                tiles[index] = null;
+            }
+        }
+        if(index % 3 !== 2){
+            if(!tiles[index+1]){
+                tiles[index+1] = this;
+                tiles[index] = null;
+            }
+        }
+        if(index > 2){
+            if(!tiles[index-3]){
+                tiles[index-3] = this;
+                tiles[index] = null;
+            }
+        }
+        if(index < 6){
+            if(!tiles[index+3]){
+                tiles[index+3] = this;
+                tiles[index] = null;
+            }
+        }
+        render();
     }
 
     //ordenação aleatória do array
